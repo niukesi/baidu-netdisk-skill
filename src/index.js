@@ -186,9 +186,10 @@ program
       const user = await api.getUserInfo();
       
       spinner.succeed('获取成功！');
-      console.log(`\n👤 用户名：${user.username}`);
-      console.log(`💾 容量：${formatSize(user.quota)} / ${formatSize(user.used)}`);
-      console.log(`📧 邮箱：${user.email}`);
+      console.log(`\n👤 百度账号：${user.baidu_name || user.netdisk_name}`);
+      console.log(`🆔 用户 ID：${user.uk}`);
+      console.log(`💎 会员类型：${user.vip_type === 0 ? '普通用户' : user.vip_type === 1 ? 'VIP' : 'SVIP'}`);
+      console.log(`🔗 头像：${user.avatar_url}`);
     } catch (error) {
       spinner.fail('获取失败');
       console.error(chalk.red(error.message));

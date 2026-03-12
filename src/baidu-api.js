@@ -75,22 +75,22 @@ class BaiduNetdiskAPI {
   /**
    * 获取用户信息
    * 使用百度网盘官方 API
+   * 文档：https://pan.baidu.com/union/doc/pksg0s9ns
    */
   async getUserInfo() {
     const response = await axios.get(
-      'https://pan.baidu.com/rest/2.0/xpan/user',
+      'https://pan.baidu.com/rest/2.0/xpan/nas',
       {
         params: {
-          method: 'info',
-          access_token: this.accessToken
+          method: 'uinfo',
+          access_token: this.accessToken,
+          vip_version: 'v2'
         },
         headers: {
           'User-Agent': 'pan.baidu.com'
         }
       }
     );
-    
-    console.log('API Response:', response.data);
     
     if (response.data.errno !== 0) {
       throw new Error(`百度 API 错误：${response.data.errno} - ${response.data.errmsg}`);
