@@ -176,17 +176,15 @@ class BaiduNetdiskAPI {
       }
     });
     
-    console.log('API Response:', JSON.stringify(response.data, null, 2));
-    
     if (response.data.errno !== 0) {
       throw new Error(`百度 API 错误：${response.data.errno} - ${response.data.errmsg}`);
     }
     
-    // 尝试多种可能的返回格式
-    if (response.data.list && response.data.list.length > 0) {
+    // 百度网盘 API 返回格式：info 数组
+    if (response.data.info && response.data.info.length > 0) {
+      return response.data.info[0].dlink;
+    } else if (response.data.list && response.data.list.length > 0) {
       return response.data.list[0].dlink;
-    } else if (response.data.dlink) {
-      return response.data.dlink;
     } else {
       throw new Error('无法解析下载链接，API 返回格式异常');
     }
