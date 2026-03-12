@@ -74,12 +74,21 @@ class BaiduNetdiskAPI {
 
   /**
    * 获取用户信息
+   * 使用百度网盘官方 API
    */
   async getUserInfo() {
-    return this.cachedRequest({
-      path: '/user',
-      data: { method: 'info' }
+    const response = await axios.get('https://pan.baidu.com/rest/2.0/xpan/user', {
+      params: {
+        method: 'info',
+        access_token: this.accessToken
+      }
     });
+    
+    if (response.data.errno !== 0) {
+      throw new Error(`百度 API 错误：${response.data.errno} - ${response.data.errmsg}`);
+    }
+    
+    return response.data;
   }
 
   /**
@@ -90,10 +99,10 @@ class BaiduNetdiskAPI {
    - 支持按类型过滤（减少返回数据）
    */
   async listFiles(dir = '/', start = 0, limit = 100, fileType = 'all') {
-    const data = await this.cachedRequest({
-      path: '/file',
-      data: {
+    const response = await axios.get('https://pan.baidu.com/rest/2.0/xpan/file', {
+      params: {
         method: 'list',
+        access_token: this.accessToken,
         dir,
         start,
         limit,
@@ -102,6 +111,12 @@ class BaiduNetdiskAPI {
         fields: 'fs_id,server_filename,size,server_ctime,server_mtime,isdir'
       }
     });
+    
+    if (response.data.errno !== 0) {
+      throw new Error(`百度 API 错误：${response.data.errno} - ${response.data.errmsg}`);
+    }
+    
+    const data = response.data;
     
     // 过滤文件类型
     if (fileType !== 'all') {
