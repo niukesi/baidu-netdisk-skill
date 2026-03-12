@@ -78,8 +78,10 @@ program
         const icon = file.isdir ? '📁' : '📄';
         const size = file.isdir ? '-' : formatSize(file.size);
         const time = new Date(file.server_mtime * 1000).toLocaleString('zh-CN');
+        const fsId = file.fs_id || '-';
         
         console.log(`${icon} ${file.server_filename.padEnd(40)} ${size.padStart(10)}  ${time}`);
+        console.log(`   fs_id: ${fsId}`);
       });
     } catch (error) {
       spinner.fail('获取失败');
