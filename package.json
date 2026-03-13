@@ -4,11 +4,13 @@
   "description": "百度网盘 Skill for OpenClaw - 安全、省 Token、云端友好",
   "main": "src/index.js",
   "bin": {
-    "baidu-netdisk-skill": "./src/index.js"
+    "baidu-netdisk-skill": "./src/index.js",
+    "baidu-netdisk-auth": "./src/auth.js"
   },
   "scripts": {
     "start": "node src/index.js",
     "config": "node src/config.js",
+    "auth": "node src/auth.js",
     "test": "node tests/basic.test.js",
     "audit": "npm audit",
     "build": "echo 'Build complete'"

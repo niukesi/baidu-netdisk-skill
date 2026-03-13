@@ -53,11 +53,19 @@
 npx skills install github:niukesi/baidu-netdisk-skill
 ```
 
-### 2. 获取百度 API 密钥
+### 2. 授权百度网盘
 
-访问 [百度网盘开放平台](https://pan.baidu.com/union/apply) 申请开发者账号。
+**方式一：OAuth 授权（推荐，无需申请 API）**
 
-### 3. 配置
+```bash
+npx baidu-netdisk-auth
+```
+
+按提示打开浏览器，登录百度网盘并授权，自动完成配置。
+
+**方式二：手动配置（需要自己申请 API）**
+
+访问 [百度网盘开放平台](https://pan.baidu.com/union/apply) 申请开发者账号，然后：
 
 ```bash
 npx baidu-netdisk-skill config \
