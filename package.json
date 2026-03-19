@@ -1,6 +1,6 @@
 {
   "name": "baidu-netdisk-skill",
-  "version": "0.2.1",
+  "version": "1.0.9",
   "description": "百度网盘 Skill for OpenClaw - 安全、省 Token、云端友好",
   "main": "src/index.js",
   "bin": {

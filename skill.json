@@ -1,6 +1,6 @@
 {
   "name": "baidu-netdisk-skill",
-  "version": "0.2.1",
+  "version": "1.0.9",
   "description": "百度网盘文件管理工具 - 支持文件列表、搜索、下载、上传，推荐 OAuth 一键授权，也支持自带 API key",
   "author": "Miaozai Studio",
   "license": "MIT",
