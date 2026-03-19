@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "selfAudit": {
+    "completedAt": "2026-03-19T09:00:00Z",
+    "auditedBy": "Miaozai Studio",
+    "externalCalls": {
+      "domains": ["pan.baidu.com", "openapi.baidu.com"],
+      "purpose": "百度网盘官方 API 调用",
+      "dataTransferred": "仅用户文件元数据和内容（端到端）"
+    },
+    "fileAccess": {
+      "read": ["~/.config/configstore/baidu-netdisk-skill.json"],
+      "write": ["~/.config/configstore/baidu-netdisk-skill.json"],
+      "purpose": "本地存储加密 Token"
+    },
+    "credentialsCollected": false,
+    "dataLeavesDevice": false,
+    "networkAccess": {
+      "required": true,
+      "whitelist": ["pan.baidu.com", "openapi.baidu.com"],
+      "purpose": "百度网盘 API 调用"
+    },
+    "permissions": {
+      "exec": true,
+      "network": true,
+      "filesystem": "limited",
+      "credentials": false
+    },
+    "riskLevel": "MEDIUM",
+    "riskJustification": "需要网络访问和 Token 存储，但仅调用百度官方 API，无第三方服务"
+  },
+  "compliance": {
+    "mitLicense": true,
+    "openSource": true,
+    "noObfuscation": true,
+    "noEval": true,
+    "noHiddenExec": true
+  },
+  "testing": {
+    "manualTested": true,
+    "automatedTests": false,
+    "securityScanned": true
+  },
+  "contact": {
+    "email": "security@miaozai.studio",
+    "github": "niukesi",
+    "responseTime": "24-72 hours"
+  }
+}
